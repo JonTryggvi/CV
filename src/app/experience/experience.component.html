@@ -1,0 +1,56 @@
+<section id="experienceSection" class="section" >
+  <div class="section__sideBar" id="experience">
+    <span>Experience</span>
+  </div>
+  <div class="section__contentExp exp" [@scrollAnimation]="state">
+    <div class="section__contentExp__list">
+      <div *ngFor="let experience of experiences" >
+        <h3>{{experience.working_for}}</h3>
+        <p>{{experience.from_to}}</p>
+        <p>{{experience.working_as}}</p>
+      </div>
+    </div>
+    <div class="section__contentExp__text">
+     <h2>{{experienceHeader}}</h2>
+     <p>{{experienceDescription}}</p>
+    </div>
+  </div>
+</section>
+
+<section  class="section" >
+  <div class="section__sideBar" id="skills">
+    <span>Skills</span>
+  </div>
+  <div class="section__contentExp ski" [@scrollAnimation2]="state2">
+    <div class="section__contentExp__text">
+      <h2>{{skillsHeader}}</h2>
+      <p>{{skillsDescription}}</p>
+    </div>
+    <div class="section__contentExp__list">
+      <div *ngFor="let skill of skills">
+        <h3>{{skill.skill_or_asset}}</h3>
+        <p>{{skill.list_of_skill_or_asset}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- educationHeader; educationDescription; educationRows; -->
+<section class="section" >
+  <div class="section__sideBar" id="education">
+    <span>Education</span>
+  </div>
+  <div class="section__contentExp edu" [@scrollAnimation3]="state3">
+    <div class="section__contentExp__list">
+      <div *ngFor="let education of educationRows">
+        <h3>{{education.what_education}}</h3>
+        <p>{{education.when_education}}</p>
+        <p>{{education.where_education}}</p>
+      </div>
+    </div>
+    <div class="section__contentExp__text">
+      <h2>{{educationHeader}}</h2>
+      <p>{{educationDescription}}</p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,16 @@
+<section class="section">
+  <div class="section__sideBar" id="contactMe">
+    <span>Contact</span>
+  </div>
+  <div class="section__contentContact" [@scrollAnimation]="state">
+    <h2>My contact details</h2>
+    <p><i class="material-icons">person</i>{{fullName}}</p>
+    <p><i class="material-icons">location_on</i>{{address}}, {{city}}</p>
+    
+   
+    <a href="mailto:{{email}}"><i class="material-icons">email</i>{{email}}</a>
+    <a href="tel:{{tel}}"><i class="material-icons">phone</i>     {{tel}}</a>
+
+  </div>
+
+</section>

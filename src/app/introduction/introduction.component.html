@@ -1,0 +1,20 @@
+<section class="section" [@scrollAnimation]="state">
+  <div class="section__sideBar" id="hi">
+    <span>Hi there</span>
+  </div>
+  <div class="section__content">
+    <div class="section__content__text">
+      <h1> 
+         Hi! my name is <br> {{name}} but you <br> can call me JT
+      </h1>
+      <p>{{shortDescription}} <a [href]="sanitize(iSpot)" target="_blank">music</a>.</p>
+    </div>
+    
+    <div id="jtImg" class="section__content__img" [ngStyle]="styles" [@scrollAnimationTest]="state2">
+      <!-- <img src="{{headshot}}" alt=""> -->
+      <div id="imgLoader" class="section__content__img__loader"></div>
+    </div>
+  </div>
+  
+</section>
+

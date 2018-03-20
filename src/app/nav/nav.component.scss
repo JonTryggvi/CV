@@ -1,0 +1,166 @@
+@import "~styles.scss";
+header {
+  position: fixed;
+  top:0;
+  width: 100%;
+  height: 76px;
+  display: flex;
+  justify-content: flex-end;
+  background-color: $lightBlue;
+  z-index: 2;
+  @include bp($phablet) {
+    background-color: transparent;
+  }
+}
+div {
+    position: absolute;
+    height: 76px;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    width: 138px;
+    background-color: #fff;
+     @include bp($phablet) {
+      max-width: 80px;
+    }
+     @include bp($phone) {
+      max-width: 50px;
+    }
+    h1 {
+      margin: 0;
+      width: 138px;
+      height: 76px;
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 76px;
+        width: 138px;
+      }
+    }
+  }
+nav {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width:60vw;
+  z-index: 6;
+  transition: all 400ms ease;
+  @include bp($large) {
+    width: 90vw;
+    justify-content: center;
+  }
+   @include bp($tablet) {
+    width: 90vw;
+    justify-content: flex-end;
+  }
+  @include bp($phablet) {
+    position: absolute;
+    background-color: $lightBlue;
+    height: 0;
+    top: -101vh;
+    right: 0;
+    width: calc(100% - 80px);
+  }
+  @include bp($phone){
+    width: calc(100% - 50px);
+  }
+
+  ul {
+    display: flex;
+    height: 76px;
+    background-color: $lightBlue;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    padding-right: 8vw;
+    @include bp($tablet) {
+      padding-right: 4vw;
+    }
+    @include bp($phablet) {
+      position: absolute;
+      padding-right: 4vw;
+      flex-flow: column;
+      height: 50vh;
+      top: 50%;
+      margin-top: -25vh;
+    }
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 90px;
+      a {
+        font-family: $mont;
+        color: $navText;
+        height: 76px;
+        display: flex;
+        align-items: center;
+        transition: all 300ms ease;
+        &:hover, &active {
+          color: $textCol;
+        }
+      }
+    }
+  }
+}
+
+.btnMenu {
+  display: none;
+  @include bp($phablet) {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    background-color: $lightBlue;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: fixed;
+    top: 14px;
+    left: calc(100vw - 60px);
+    z-index: 50;
+    span {
+      position: absolute;
+      width: 30px;
+      height: 2px;
+      background-color: $textCol;
+      transition: all 300ms ease;
+      z-index: 50;
+    }
+    span:nth-child(1) {
+      top: 35%;
+    }
+    span:nth-child(2) {
+      top: 65%;
+    }
+    #btnClickable {
+      width: 50px;
+      height: 50px;
+      background-color: transparent;
+      z-index: 51;
+    }
+  }
+  @include bp($phone) {
+    width: 40px;
+    height: 40px;
+    
+  }
+}
+.btnActive {
+  span:nth-child(1){
+    top: 50%;
+    transform: rotate(45deg);
+  }
+  span:nth-child(2){
+    top: 50%;
+    transform: rotate(-45deg);
+  }
+}
+
+.setTop {
+  top: 0;
+  height: 102vh;
+  transition: all 400ms ease;
+}
