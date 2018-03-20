@@ -1,0 +1,44 @@
+<header>
+  <div>
+    <h1>
+      <a (click)="whatBrowser() === 'Chrome' || whatBrowser() === 'Firefox' ? scrollTo('hi', $event) : scrollIt( 'hi', 600, 'easeInOutCubic',
+      $event)" >JT</a>
+    </h1>
+  </div>
+  <nav>
+   
+    <ul>
+      <li>
+ <!-- scrollTo('hi', $event) -->
+        <a class="nav aActive" (click)="whatBrowser() === 'Chrome' || whatBrowser() === 'Firefox' ? scrollTo('hi', $event) : scrollIt( 'hi', 600, 'easeInOutCubic', $event)" data-id="hi">Hi there</a>
+      </li>
+      <li>
+        <a class="nav" (click)="whatBrowser() === 'Chrome' || whatBrowser() === 'Firefox' ? scrollTo('iLove', $event) : scrollIt( 'iLove', 600,
+        'easeInOutCubic', $event)" data-id="iLove">I Love to</a>
+      </li>
+      <li>
+        <a class="nav" (click)="whatBrowser() === 'Chrome' || whatBrowser() === 'Firefox' ? scrollTo('experience', $event) : scrollIt( 'experience', 600, 'easeInOutCubic',
+        $event)" data-id="experience">Experience</a>
+      </li>
+      <li>
+        <a class="nav" (click)="whatBrowser() === 'Chrome' || whatBrowser() === 'Firefox' ? scrollTo('myWork', $event) : scrollIt( 'myWork', 600,
+        'easeInOutCubic', $event)" data-id="myWork">My work</a>
+      </li>
+      <li>
+        <a class="nav" (click)="whatBrowser() === 'Chrome' || whatBrowser() === 'Firefox' ? scrollTo('references', $event) : scrollIt( 'references', 600, 'easeInOutCubic',
+        $event)" data-id="references">References</a>
+      </li>
+      <li>
+        <a class="nav" (click)="whatBrowser() === 'Chrome' || whatBrowser() === 'Firefox' ? scrollTo('contactMe', $event) : scrollIt( 'contactMe', 600, 'easeInOutCubic',
+        $event)" data-id="contactMe">Contact me</a>
+      </li>
+    </ul>
+  
+  </nav>
+</header>
+  <div id="btnMenu" class="btnMenu" >
+    <span></span>
+    <span></span>
+    <span id="btnClickable" (click)="btnMenu($event)"></span>
+  </div>
+

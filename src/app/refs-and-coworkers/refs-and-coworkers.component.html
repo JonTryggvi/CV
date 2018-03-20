@@ -1,0 +1,44 @@
+<section class="section">
+  <div class="section__sideBar">
+    <span>Referenses</span>
+  </div>
+  <div class="section__contentRefs" [@scrollAnimation]="state">
+
+    <div class="section__contentRefs__text">
+     <h2>References</h2>
+     <p>{{sliderText}}</p>
+    </div>
+    <div class="section__contentRefs__sliderContainer carousel">
+      <!-- You can use owl-carousel selector to include its component -->
+      <owl-carousel 
+        [options]="{items: 1, dots: false, loop: true, rewind: false, autoplay: true, autoplayTimeout: 10000, autoplaySpeed: 700 }" 
+        [items]="collabs"
+        [carouselClasses]="['owl-theme', 'row', 'sliding']" #owlElement>
+        
+        <div class="item" *ngFor="let image of collabs; let i = index">
+          <div class="thumbnail-image">
+            <img src="{{image.collab_img.url}}" alt="Collaborator {{image.collab_name}}">
+          </div>
+          <h3>{{image.collab_name}}</h3>
+          <p>{{image.collab_job_title}}</p>
+          <p class="quote">{{image.quote}}</p>
+          <div>
+            <a *ngIf="image.collab_link" href="{{image.collab_link}}"><i class="material-icons">link</i></a>
+            <a href="mailto:{{image.collab_email} "><i class="material-icons">email</i></a>
+          </div>
+          
+        </div>
+     
+      </owl-carousel>
+        <span id="nextSlide" (click)="fun('next')" >
+        
+        </span>
+        <span id="prevSlide"(click)="fun('prev')">
+        
+        </span>
+    </div>
+
+
+  </div>
+
+</section>

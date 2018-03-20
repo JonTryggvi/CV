@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500,600,700|Roboto');
+
+$mont: 'Montserrat', sans-serif;
+$robo: 'Roboto', sans-serif;
+
+$lightBlue: #F2F9FF;
+$blue: #3CA6FF;
+$lightGrey: #D8D8D8;
+$textCol: #222339;
+$navText: #96A5B0;
+$imgOverlay: #84BAFF;
+$imgOverlayA: rgba($imgOverlay, 0.7);
+
+// breaking points
+
+$large: 1200;
+$tablet: 1024;
+$phablet: 800;
+$phone: 415;
+
+* {
+  box-sizing: border-box;
+}
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+ 
+body {
+  padding: 0;
+  margin: 0;
+ 
+}
+body {
+  margin-top: 76px;
+  // overflow: hidden;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+h1, h2, h3 {
+  font-family: $mont;
+  font-weight: 600;
+}
+h1 {
+
+  font-size: 42px;
+  
+  @include bp($tablet) {
+    font-size: 22px;
+  }
+}
+h3 {
+  font-size: 18px;
+  @include bp(400) {
+    font-size: 16px;
+  }
+}
+  
+p {
+  
+  font-family: $robo;
+  font-size: 20px;
+  line-height: 32px;
+  @include bp(400) {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+a {
+  font-family: $mont;
+  text-decoration: none;
+  color: $textCol;
+  transform: all 300ms ease;
+  cursor: pointer;
+  &:hover {
+   color: tomato;
+  }
+}
+.aActive {
+  color: $textCol !important;
+}
+
+// section globals
+.section__sideBar {
+    min-width: 138px;
+    min-height: 600px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid $lightGrey;
+    @include bp($phablet) {
+      min-width: 80px;
+    }
+     @include bp($phone) {
+      min-width: 50px;
+
+    }
+    span {
+      display: inline-flex;
+      position: absolute;
+      transform: rotate(-90deg);
+      font-family: $mont;
+      font-weight: 600;
+      &::before {
+        position: absolute;
+        content: '';
+        height: 6px;
+        width: 34px;
+        background-color: $blue;
+        left: -44px;
+        top: 50%;
+        margin-top: -3px;
+      }
+       @include bp($phone) {   
+        // min-width: 100px;
+      }
+    }
+  }
+
+.section {
+  max-width: 1440px;
+  min-height: 600px;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 100px 0;
+  @include bp($phone) {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  &__content, &__content2, &__contentExp, &__contentRefs, &__contentContact {
+    flex: 1;
+    display: flex;
+    justify-content: space-evenly;
+    @include bp($phablet) {
+      flex-flow: column;
+      max-width: 70vw;
+    }
+    @include bp($phone) {
+      max-width: 80vw;
+    }
+  }
+  &__content {
+    min-height: 600px;
+     @include bp($phone) {
+      width: 100%;
+      flex-flow: column;
+      height: 100%;
+      justify-content: space-around;
+      align-items: center;
+    }
+    &__text {
+      max-width: 486px;
+      width: 100%;
+      padding: 0;
+    
+    }
+    &__img {
+      max-width: 500px;
+      min-height: 400px;  
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @include bp($phone) {
+        min-height: 20vh;
+        
+      }
+    }
+  }
+  &__content2 {
+     &__text {
+      max-width: 854px;
+      width: 100%;
+      padding: 0 40px 0;
+      @include bp($phone) {
+        padding: 0 0 0 10px;
+      }
+      &__fourOfEach {
+        display: flex;
+        flex-flow: row wrap;
+        width: 100%;
+        &__each {
+          display: flex;
+          width: 50%;
+        }
+      }
+    }
+    &__img {
+      max-width: 132px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        width: 100%;
+      }
+    }
+  }
+}

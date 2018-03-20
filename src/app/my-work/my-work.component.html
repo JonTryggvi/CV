@@ -1,0 +1,18 @@
+<section class="section" >
+  <div class="section__sideBar" id="myWork">
+    <span>My Work</span>
+  </div>
+  <div class="section__contentWork" [@scrollAnimation]="state">
+  
+    <a  class="myWorkCard" *ngFor="let work of works; index as i" [ngStyle]="setMyStyles(work.what_work_image.sizes['large'], i, work.is_mocup)" data-bcolor="tomato" (press)="hoverFunc($event)">
+      <h2 class="myWorkCard__h2">{{work.what_work}}</h2>
+      <p class="myWorkCard__p">{{work.what_work_description}}</p>
+      <a href="{{work.what_work_link}}" target="_blank" class="myWorkCard__btn" type="button">PROJECT</a>
+    </a>
+
+
+  </div>
+
+</section>
+
+

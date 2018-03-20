@@ -1,0 +1,71 @@
+@import "~styles.scss";
+app-introduction {
+  max-height: 600px;
+}
+.section {
+  margin-top:150px;
+  
+  &__content {
+    @include bp($phablet) {
+      flex-flow: column-reverse;
+      margin-left: 40px;
+      align-items: center;
+    }
+    @include bp($phone) {
+      margin-left: 5px;
+    }
+    
+  }
+
+  @include bp(700) {
+    width: 100vw;
+    min-width: 100vw;
+    // align-self: center;
+    margin-top:100px;
+
+    
+  }
+  &__content__text {
+    p {
+       a {
+            color: $blue;
+            transition: color 300ms ease;
+            &:hover {
+              color: tomato;
+            }
+          }
+    }
+    @include bp($tablet) {
+      max-width: 380px;
+      padding:0 0 0 10px;
+    }
+  }
+  &__content__img {
+    position: relative;
+    background-color: rgba(#3CA6FF, 0.21);
+    background-blend-mode: darken;
+    background-size: cover;
+    @include bp($large){
+      max-width: 300px;
+      min-height: 300px;  
+    }
+    @include bp($phablet){
+      // border-radius: 50%;
+      max-width: 200px;
+      min-height: 200px;  
+    }
+    &__loader {
+      display: none;
+      position: absolute;
+      width:100%;
+      min-width: 500px;
+      height: 405px;
+      background-color: rgba(#3CA6FF, 0.9);
+      opacity: 1;
+      transition: all 1000ms ease;
+      z-index: 6;
+    }
+  }
+
+}
+

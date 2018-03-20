@@ -1,0 +1,56 @@
+@import "~styles.scss";
+app-contact {
+  max-height: 800px;
+}
+.section__contentContact {
+  flex-flow: column;
+  padding-left: 20%;
+  h2 {
+    margin-left: -40px;
+  }
+  p {
+    position: relative;
+    margin: 0;
+    color: $navText;
+    line-height: 42px;
+    @include bp($phone){
+      font-size: 14px;
+    }
+     i {
+      position: absolute;
+      display:inline-flex;
+      align-items: center;
+      
+      left: -40px; 
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-family: $robo;
+    text-decoration: none;
+    color: $navText;
+    font-size: 20px;
+    line-height: 42px;
+    transform: all 400ms ease;
+    margin-right: -30px;
+    cursor: pointer;
+    &:hover {
+    color: tomato;
+    }
+    @include bp($phone){
+      font-size: 14px;
+    }
+    i {
+      position: absolute;
+      display:inline-flex;
+      align-items: center;
+      left: -40px; 
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
