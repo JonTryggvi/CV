@@ -46,40 +46,70 @@ export class MyWorkComponent implements OnInit {
   backgroundImage: String;
   width: String;
   height = 800;
-  randNumber: number;
+  // randNumber: number;
   backroundSize: String;
+  display: String;
+  publishedArr = [];
   state = 'hide';
   state2 = 'hide';
+
+
+
   setMyStyles(imgUrl, i, isMocup) {
-    const heights = [350, 250, 260, 330];
-    let height = 400;
+    const itemProps = [
+      {
+        height: 34,
+        backCol: '#E9D460'
+      },
+      {
+        height: 33,
+        backCol: '#59ABE3'
+      },
+      {
+        height: 34,
+        backCol: '#4ECDC4'
+      },
+      {
+        height: 50,
+        backCol: '#E9D460'
+      },
+      {
+        height: 55,
+        backCol: '#913D88'
+      }];
+    let height = 50;
     let width = '100%';
-    const backgroundColors = ['#E9D460', '#59ABE3', '#4ECDC4', '#913D88'];
-    this.randNumber = Math.floor(Math.random() * this.works.length) + 1;
-    // console.log(isMocup);
-    if (window.innerHeight < 800) {
-      height = 200;
+    // const backgroundColors = ['#E9D460', '#59ABE3', '#4ECDC4', '#E9D460', '#913D88'];
+    const randNumber = Math.floor(Math.random() * itemProps.length);
+    // console.log(window.innerHeight);
+    if (window.innerWidth < 800) {
+      height = 20;
     }
 
     if (isMocup === true) {
-      this.backroundSize = '80%';
+      this.backroundSize = '60%';
     } else {
       this.backroundSize = '100%';
     }
 
+
+
+
+
     if (this.works.length >= 5 && window.innerWidth > 414) {
-      width = '30%';
+      width = '48%';
     } else if (this.works.length < 5 && window.innerWidth > 414) {
       width = '48%';
     } else if (window.innerWidth <= 414) {
       width = '100%';
     }
     const styles = {
+      'display': this.display,
       'width': width,
-      'height': height + 'px',
+      'height': itemProps[i].height + 'vh',
       'max-heigth': this.height,
       'background-size': this.backroundSize,
-      'background-color': backgroundColors[i],
+      'background-color': itemProps[i].backCol,
       // 'flex-grow': (i + 1),
       // 'flex-shrink': (i + 1),
       // 'flex-basis': '1%',
@@ -88,14 +118,14 @@ export class MyWorkComponent implements OnInit {
     return styles;
   }
 
-  hoverFunc(e) {
-    // console.log(e);
 
-    if (window.innerWidth < 800) {
 
-      //  e.preventDefault();
-
+  isPub(type) {
+    // console.log(this.works.filter(x => x.show_hide === type));
+    if (this.works) {
+      return this.works.filter(x => x.show_hide === type);
     }
+
   }
 
   constructor(private apiServise: ApiService, public el: ElementRef, private animationService: AnimationService) { }
@@ -123,7 +153,7 @@ export class MyWorkComponent implements OnInit {
     // tslint:disable-next-line:max-line-length
     if (scrollPosition >= componentPosition - (windHeight + addToEl) && scrollPosition <= componentPosition + windHeight + addToEl + removefrom) {
       this.state = 'show';
-      this.animationService.changeNavStatus(thisScrollToId);
+      // this.animationService.changeNavStatus(thisScrollToId);
 
     } else {
       this.state = 'hide';
@@ -133,7 +163,10 @@ export class MyWorkComponent implements OnInit {
     } else {
       this.state2 = 'hide';
     }
-
+    if (scrollPosition >= componentPosition + removefrom && scrollPosition <= componentPosition + windHeight + addToEl + removefrom) {
+      // console.log('marker2');
+      this.animationService.changeNavStatus(thisScrollToId);
+    }
   }
 
   ngOnInit() {

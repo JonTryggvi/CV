@@ -85,35 +85,58 @@ export class ExperienceComponent implements OnInit {
     const skillsId = this.el.nativeElement.children[1].offsetTop;
     const educationId = this.el.nativeElement.children[2].offsetTop;
     const minimizer = 0.3;
-
+    let gear = 0.2;
+    let addToEl = 0;
+    let removefrom = -400;
+    if (window.innerWidth <= 800) {
+      gear = 0;
+      addToEl = 300;
+      removefrom = 0;
+    }
     // console.dir(skillsId);
-    // console.dir(educationId.offsetTop);
+    // console.dir(thisScrollToId1);
 
 
     const componentPosition = this.el.nativeElement.offsetTop;
     const scrollPosition = window.pageYOffset;
     // console.log(scrollPosition);
 
-    if (scrollPosition >= expId - elHeightExp && scrollPosition <= expId + windHeight - (windHeight * minimizer) ) {
+    if (scrollPosition >= expId - windHeight && scrollPosition <= expId + windHeight ) {
       this.state = 'show';
       this.navName = 'Experience';
-      this.animationService.changeNavStatus(thisScrollToId, this.navName);
+      // this.animationService.changeNavStatus(thisScrollToId, this.navName);
     } else {
       this.state = 'hide';
     }
-    if (scrollPosition >= skillsId - elHeightSkl && scrollPosition <= skillsId + windHeight - (windHeight * minimizer)) {
+    if (scrollPosition >= skillsId - windHeight && scrollPosition <= skillsId + windHeight ) {
       this.navName = 'Skills';
-      this.animationService.changeNavStatus(thisScrollToId, this.navName);
+      // this.animationService.changeNavStatus(thisScrollToId, this.navName);
       this.state2 = 'show';
     } else {
       this.state2 = 'hide';
     }
-    if (scrollPosition >= educationId - elHeightEdu && scrollPosition <= educationId + windHeight - (windHeight * minimizer)) {
+    if (scrollPosition >= educationId - windHeight && scrollPosition <= educationId + windHeight ) {
       this.navName = 'Education';
-      this.animationService.changeNavStatus(thisScrollToId, this.navName);
+      // this.animationService.changeNavStatus(thisScrollToId, this.navName);
       this.state3 = 'show';
     } else {
       this.state3 = 'hide';
+    }
+
+    if (scrollPosition >= expId + removefrom && scrollPosition <= expId + windHeight + addToEl + removefrom) {
+      // console.log('marker2');
+      this.navName = 'Experience';
+      this.animationService.changeNavStatus(thisScrollToId, this.navName);
+    }
+    if (scrollPosition >= skillsId + removefrom && scrollPosition <= skillsId + windHeight + addToEl + removefrom) {
+      // console.log('marker2');
+      this.navName = 'Skills';
+      this.animationService.changeNavStatus(thisScrollToId, this.navName);
+    }
+    if (scrollPosition >= educationId + removefrom && scrollPosition <= educationId + windHeight + addToEl + removefrom) {
+      // console.log('marker2');
+      this.navName = 'Education';
+      this.animationService.changeNavStatus(thisScrollToId, this.navName);
     }
 
   }

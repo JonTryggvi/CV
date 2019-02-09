@@ -1,6 +1,7 @@
 @import "~styles.scss";
 .section {
-  max-height: 600px;
+  // max-height: 600px;
+
 }
 .section__content2 {
   @include bp($phone) {
@@ -11,7 +12,6 @@
     flex-flow: column;
     max-width: 854px;
     width: 100%;
-    
     justify-content: center;
     &__fourOfEach {
       display: flex;

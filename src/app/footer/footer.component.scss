@@ -20,6 +20,9 @@ footer {
     @include bp($phablet) {
       max-width: 80px;
     }
+     @include bp($phone) {
+      max-width: 50px;
+    }
   }
   ul {
     display: flex;

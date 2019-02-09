@@ -73,10 +73,22 @@ export class RefsAndCoworkersComponent implements OnInit {
     const elHeight = this.el.nativeElement.children[0].clientHeight;
     const windHeight = window.innerHeight;
     // console.log(componentPosition);
+    const thisScrollToId = this.el.nativeElement.id;
+
+    // console.dir(this.el.nativeElement.children[0].children[0].id);
+    // console.dir(scrollPosition);
+    let gear = 0.2;
+    let addToEl = 0;
+    let removefrom = -400;
+    if (window.innerWidth <= 800) {
+      gear = 0;
+      addToEl = 300;
+      removefrom = 0;
+    }
 
     if (scrollPosition >= componentPosition - elHeight && scrollPosition <= componentPosition + windHeight - (windHeight * 0.2)) {
       this.state = 'show';
-      this.animationService.changeNavStatus(this.el.nativeElement.id);
+      // this.animationService.changeNavStatus(this.el.nativeElement.id);
 
     } else {
       this.state = 'hide';
@@ -85,6 +97,11 @@ export class RefsAndCoworkersComponent implements OnInit {
       this.state2 = 'show';
     } else {
       this.state2 = 'hide';
+    }
+
+    if (scrollPosition >= componentPosition + removefrom && scrollPosition <= componentPosition + windHeight + addToEl + removefrom) {
+      // console.log('marker2');
+      this.animationService.changeNavStatus(thisScrollToId);
     }
 
   }
