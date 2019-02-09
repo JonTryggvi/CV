@@ -42,7 +42,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   ]
 })
 export class ILoveComponent implements OnInit {
-
+  title: String;
   iLoveImg: String;
   name: String;
   shortDescription: String;
@@ -59,7 +59,7 @@ export class ILoveComponent implements OnInit {
     const elHeight = this.el.nativeElement.children[0].children[1].clientHeight;
     const cliHeight = this.el.nativeElement.children[0].clientHeight;
     const windHeight = window.innerHeight;
-    const componentPosition = this.el.nativeElement.offsetTop;
+    const componentPosition = this.el.nativeElement.children[0].children[1].offsetTop;
     const scrollPosition = window.pageYOffset;
     // console.log(componentPosition);
     const thisScrollToId = this.el.nativeElement.children[0].children[0].id;
@@ -67,13 +67,15 @@ export class ILoveComponent implements OnInit {
     let addToEl = 0;
     let removefrom = -400;
     if (window.innerWidth <= 800) {
-      gear = 0;
+      gear = 0.4;
       addToEl = -200;
       removefrom = 0;
     }
+    // console.dir(this.el.nativeElement.children[0].children[1]);
+
     // (elHeight + addToEl)
     // tslint:disable-next-line:max-line-length
-    if (scrollPosition >= componentPosition - (windHeight + addToEl) && scrollPosition <= componentPosition + windHeight + addToEl + removefrom) {
+    if (scrollPosition >= componentPosition - windHeight && scrollPosition <= componentPosition + windHeight) {
       this.state = 'show';
       // this.animationService.changeNavStatus(thisScrollToId);
 
@@ -99,7 +101,7 @@ export class ILoveComponent implements OnInit {
 
   ngOnInit() {
     this.apiServise.getData().subscribe(data => {
-
+      this.title = data.acf.what_i_love_to_do_h;
       this.iLoveImg = data.acf.i_love_img.sizes['large'];
       this.name = data.acf.name;
       this.shortDescription = data.acf.love_to_do_description;

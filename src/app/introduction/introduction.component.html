@@ -9,9 +9,9 @@
       </h1>
       <p>{{shortDescription}} <a [href]="sanitize(iSpot)" target="_blank">music</a>.</p>
     </div>
-    
-    <div id="jtImg" class="section__content__img" [ngStyle]="styles" [@scrollAnimationTest]="state2">
-      <!-- <img src="{{headshot}}" alt=""> -->
+    <!--  [ngStyle]="styles" -->
+    <div id="jtImg" class="section__content__img" [ngStyle]="styles" [@scrollAnimationTest]="state2" >
+      <!-- <img [src]="sanitize(headshot)"  alt=""> -->
       <div id="imgLoader" class="section__content__img__loader"></div>
     </div>
   </div>

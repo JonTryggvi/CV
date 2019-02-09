@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, HostListener } from '@angular/core';
+import { Component, OnInit, ElementRef, HostListener, ChangeDetectorRef } from '@angular/core';
 import { ApiService } from '../api.service';
 import {
   trigger,
@@ -45,13 +45,22 @@ export class IntroductionComponent implements OnInit {
   headshot: String;
   name: String;
   shortDescription: String;
-  iSpot: String;
+  iSpot;
   state = 'show';
   state2 = 'show';
   styles: any;
+  loader: any;
   // tslint:disable-next-line:max-line-length
-  constructor(private apiServise: ApiService, public el: ElementRef, private animationService: AnimationService, private sanitizer: DomSanitizer) { }
+  constructor(private apiServise: ApiService, public el: ElementRef, private animationService: AnimationService, private sanitizer: DomSanitizer, cd: ChangeDetectorRef) { }
+  @HostListener('window:load', ['$event'])
 
+  checkLoad() {
+    setTimeout( () => { this.el.nativeElement.children[0].children[1].children[1].children[0].style.opacity = 0; }, 4000);
+  }
+
+  // const loaderDiv: HTMLElement = document.getElementById('imgLoader');
+  // this.el.nativeElement.children[0].children[1].children[1].children[0].style.opacity = 0;
+  // loaderDiv.style.opacity = 0;
   @HostListener('window:scroll', ['$event'])
   checkScroll() {
 
@@ -64,7 +73,7 @@ export class IntroductionComponent implements OnInit {
     const scrollPosition = window.pageYOffset;
     // console.log(componentPosition);
 
-    if (scrollPosition >= componentPosition - elHeight && scrollPosition <= componentPosition + windHeight - elHeight ) {
+    if (scrollPosition >= componentPosition - elHeight && scrollPosition <= componentPosition + elHeight ) {
       this.state = 'show';
       // this.animationService.changeNavStatus(thisScrollToId);
     } else {
@@ -79,7 +88,7 @@ export class IntroductionComponent implements OnInit {
     // console.log(scrollPosition);
     if (scrollPosition >= componentPosition  && scrollPosition <= componentPosition + elHeight ) {
       // this.state = 'show';
-      console.log('marker');
+      // console.log('marker');
 
       this.animationService.changeNavStatus(thisScrollToId);
     }
@@ -87,6 +96,8 @@ export class IntroductionComponent implements OnInit {
   sanitize(url: string) {
     return this.sanitizer.bypassSecurityTrustUrl(url);
   }
+
+
 
   ngOnInit() {
     this.apiServise.getData().subscribe(data => {
@@ -98,7 +109,9 @@ export class IntroductionComponent implements OnInit {
       this.styles = {
         'background-image': 'url(' + this.headshot + ')'
       };
-      this.el.nativeElement.children[0].children[1].children[1].children[0].style.opacity = 0;
+
+
+      // this.el.nativeElement.children[0].children[1].children[1].children[0].style.opacity = 0;
       // return this.data;
 
     });

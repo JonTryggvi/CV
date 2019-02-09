@@ -9,7 +9,7 @@ app-introduction {
     @include bp($phablet) {
       flex-flow: column-reverse;
       margin-left: 40px;
-      align-items: center;
+      align-items: flex-start;
     }
     @include bp($phone) {
       margin-left: 5px;
@@ -45,27 +45,81 @@ app-introduction {
     background-color: rgba(#3CA6FF, 0.21);
     background-blend-mode: darken;
     background-size: cover;
+    // height: 400px;
+    
+    overflow: hidden;
+
+    img {
+      width:100%;
+    }
     @include bp($large){
       max-width: 300px;
       min-height: 300px;  
     }
     @include bp($phablet){
       // border-radius: 50%;
+      margin-left: 10px;
       max-width: 200px;
       min-height: 200px;  
     }
     &__loader {
-      display: none;
+      display: flex;
       position: absolute;
       width:100%;
-      min-width: 500px;
-      height: 405px;
-      background-color: rgba(#3CA6FF, 0.9);
+      // min-width: 500px;
+      height: 100%;
+      background-color: #F2F9FF;
       opacity: 1;
       transition: all 1000ms ease;
       z-index: 6;
+      font-family: $mont;
+      font-size: 36px;
+      font-weight: 700;
+      justify-content: center;
+      align-items: center;
+      
+      &::before {
+        animation: loader 6s infinite linear;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        content: 'JT';
+        z-index: 7;
+      }
     }
   }
 
+}
+
+@keyframes loader {
+  0% {
+    opacity: 1;
+    transform: rotate3d(0,1,0,0deg);
+
+  }
+
+  25% {
+    opacity: 0.1;
+    transform: rotate3d(0,1,0,90deg);
+
+  }
+
+  50% {
+    opacity: 1;
+    transform: rotate3d(0,1,0,180deg);
+
+  }
+
+  75% {
+    opacity: 0.1;
+    transform: rotate3d(0,1,0,270deg);
+
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotate3d(0,1,0,360deg);
+
+  }
 }
 

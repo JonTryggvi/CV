@@ -4,6 +4,7 @@
   </div>
   <div class="section__content2" [@scrollAnimation]="state">
     <div class="section__content2__text">
+      <h2>{{title}}</h2>
       <p>{{shortDescription}}</p>
       <div class="section__content2__text__fourOfEach">
         <div class="section__content2__text__fourOfEach__each" *ngFor="let iLoveto of iLovetos" [@scrollAnimationTest]="state2">

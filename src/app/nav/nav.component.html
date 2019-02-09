@@ -1,12 +1,11 @@
 <header>
   <div>
     <h1>
-      <a (click)="whatBrowser() === 'Chrome' || whatBrowser() === 'Firefox' ? scrollTo('hi', $event) : scrollIt( 'hi', 600, 'easeInOutCubic',
-      $event)" >JT</a>
+      <a (click)="whatBrowser() === 'Chrome' || whatBrowser() === 'Firefox' ? scrollTo('hi', $event) : scrollIt( 'hi', 600, 'easeInOutCubic', $event, callback())" >JT</a>
     </h1>
   </div>
   <nav>
-   
+
     <ul>
       <li>
  <!-- scrollTo('hi', $event) -->
@@ -33,7 +32,7 @@
         $event)" data-id="contactMe">Contact me</a>
       </li>
     </ul>
-  
+
   </nav>
 </header>
   <div id="btnMenu" class="btnMenu" >

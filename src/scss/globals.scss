@@ -54,6 +54,13 @@ h1 {
     font-size: 22px;
   }
 }
+h2 {
+  font-size: 32px;
+  @include bp($phablet) {
+    font-size: 26px;
+  }
+
+}
 h3 {
   font-size: 18px;
   @include bp(400) {
@@ -132,6 +139,7 @@ a {
   justify-content: flex-start;
   align-items: center;
   margin: 100px 0;
+
   @include bp($phone) {
     width: 100%;
     justify-content: flex-start;
